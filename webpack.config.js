@@ -10,7 +10,7 @@ module.exports = {
     entry: "./app/entry.js",
     output: {
         path: __dirname,
-        filename: "bundle.js"
+        filename: "js/bundle.js"
     },
     plugins: [
         new HtmlWebpackPlugin({
