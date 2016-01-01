@@ -48,7 +48,6 @@
 	 * Created by outcastgeek on 12/31/15.
 	 */
 
-	//document.write("It works.");
 	__webpack_require__(1);
 	document.write(__webpack_require__(5));
 
