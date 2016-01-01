@@ -4,11 +4,40 @@
 
 require('./style.css');
 
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Text from './content';
 
-ReactDOM.render(
-    <h1>{Text} | For Real!!</h1>,
-    document.getElementById('content')
-);
+import { createStore } from 'redux';
+
+import { counter } from './reducer';
+
+const store = createStore(counter);
+
+class CounterView extends Component {
+
+    render() {
+        var {value, onIncrement, onDecrement} = this.props;
+        return (
+            <div>
+                <h1>Count: {value}</h1>
+                <button onClick={onIncrement}>+</button>
+                <button onClick={onDecrement}>-</button>
+            </div>
+        );
+    }
+}
+
+const render = () => {
+    ReactDOM.render(
+        <CounterView
+            value={store.getState()}
+            onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+            onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+        />,
+        document.getElementById('content')
+    );
+}
+
+store.subscribe(render);
+
+render();

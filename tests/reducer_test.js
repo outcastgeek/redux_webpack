@@ -2,7 +2,7 @@
  * Created by outcastgeek on 1/1/16.
  */
 
-import {counter} from '../app/reducer';
+import { counter } from '../app/reducer';
 
 import expect, { createSpy, spyOn, isSpy } from 'expect';
 
