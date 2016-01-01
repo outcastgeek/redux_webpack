@@ -21,8 +21,9 @@ module.exports = {
     ],
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['react-hot', 'babel']},
-            { test: /\.css$/, loader: "style!css" }
+            { test: /\.js$/, loaders: ['react-hot', 'babel', 'eslint']},
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.scss$/, loader: "css-loader!sass-loader" }
         ]
     }
 };

@@ -2,7 +2,7 @@
  * Created by outcastgeek on 12/31/15.
  */
 
-require("./style.css");
+require('./style.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
