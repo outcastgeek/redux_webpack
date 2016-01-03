@@ -12,8 +12,14 @@ const counter = (state = 0, action) => {
         default:
             return state;
     }
-}
+};
+
+const addCounter = (list) => {
+    list.push(0);
+    return list;
+};
 
 module.exports = {
-    counter: counter
-}
+    counter: counter,
+    addCounter: addCounter
+};

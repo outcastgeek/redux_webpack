@@ -2,7 +2,7 @@
  * Created by outcastgeek on 1/1/16.
  */
 
-import { counter } from '../app/reducer';
+import { counter, addCounter } from '../app/reducer';
 
 import expect, { createSpy, spyOn, isSpy } from 'expect';
 
@@ -46,6 +46,17 @@ describe('Counter Reducer Tests', () => {
         expect(
             counter(undefined, {})
         ).toEqual(0);
+
+    });
+
+    it('should return same list', () => {
+
+        const listBefore = [];
+        const listAfter = [0];
+
+        expect(
+            addCounter(listBefore)
+        ).toEqual(listAfter);
 
     });
 

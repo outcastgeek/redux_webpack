@@ -2,7 +2,9 @@
  * Created by outcastgeek on 12/31/15.
  */
 
-require('./style.css');
+require('./style.css'); // imports globally
+
+require('./text.scss'); // imports globally
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
