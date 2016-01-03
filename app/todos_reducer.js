@@ -16,9 +16,36 @@ const toggleTodo = (todo) => {
         ...todo,
         completed: !todo.completed
     };
-    // Valid for ES7 (babel stage-2)
+    // Valid for ES7 (babel stage-2 preset), does not require a polyfill
+};
+
+const todos = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            return [
+                ...state,
+                {
+                    id: action.id,
+                    text: action.text,
+                    completed: false
+                }
+            ];
+        case 'TOGGLE_TODO':
+            return state.map(todo => {
+                if (todo.id !== action.id) {
+                    return todo;
+                }
+                return {
+                    ...todo,
+                    completed: !todo.completed
+                };
+            });
+        default:
+            return state;
+    }
 };
 
 module.exports = {
-    toggleTodo: toggleTodo
+    toggleTodo: toggleTodo,
+    todos: todos
 }
