@@ -15,11 +15,27 @@ const counter = (state = 0, action) => {
 };
 
 const addCounter = (list) => {
-    list.push(0);
-    return list;
+    return [...list, 0];
+};
+
+const removeCounter = (list, index) => {
+    return [
+        ...list.slice(0, index),
+        ...list.slice(index + 1)
+    ];
+};
+
+const incrementCounter = (list, index) => {
+    return [
+        ...list.slice(0, index),
+        list[index] + 1,
+        ...list.slice(index + 1)
+    ];
 };
 
 module.exports = {
     counter: counter,
-    addCounter: addCounter
+    addCounter: addCounter,
+    removeCounter: removeCounter,
+    incrementCounter: incrementCounter
 };

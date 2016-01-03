@@ -2,9 +2,16 @@
  * Created by outcastgeek on 1/1/16.
  */
 
-import { counter, addCounter } from '../app/reducer';
+import {
+    counter,
+    addCounter,
+    removeCounter,
+    incrementCounter
+} from '../app/reducer';
 
 import expect, { createSpy, spyOn, isSpy } from 'expect';
+
+import deepFreeze from 'deep-freeze';
 
 describe('Counter Reducer Tests', () => {
 
@@ -49,15 +56,39 @@ describe('Counter Reducer Tests', () => {
 
     });
 
-    it('should return same list', () => {
+    it('should return the same list with 0 appended', () => {
 
         const listBefore = [];
         const listAfter = [0];
+
+        deepFreeze(listBefore);
 
         expect(
             addCounter(listBefore)
         ).toEqual(listAfter);
 
+    });
+
+    it('should remove list item at index 1', () => {
+        const listBefore = [0, 10, 20];
+        const listAfter = [0, 20];
+
+        deepFreeze(listBefore);
+
+        expect(
+            removeCounter(listBefore, 1)
+        ).toEqual(listAfter);
+    });
+
+    it('should increment the counter at index 1', () => {
+        const listBefore = [0, 10, 20];
+        const listAfter = [0, 11, 20];
+
+        deepFreeze(listBefore);
+
+        expect(
+            incrementCounter(listBefore, 1)
+        ).toEqual(listAfter);
     });
 
 });
