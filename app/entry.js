@@ -2,9 +2,9 @@
  * Created by outcastgeek on 12/31/15.
  */
 
-require('./style.css'); // imports globally
+import './style.css';
 
-require('./text.scss'); // imports globally
+import'./text.scss';
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -21,7 +21,7 @@ class CounterView extends Component {
         var {value, onIncrement, onDecrement} = this.props;
         return (
             <div>
-                <h1>Count: {value}</h1>
+                <h1 className="souligne">Count: {value}</h1>
                 <button onClick={onIncrement}>+</button>
                 <button onClick={onDecrement}>-</button>
             </div>
