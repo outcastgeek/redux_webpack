@@ -55,7 +55,7 @@ describe('Todos Reducer Tests', () => {
         ).toEqual(stateAfter);
     });
 
-    it('should add a todo', () => {
+    it('should toggle a todo', () => {
         const stateBefore = [
             {
                 id: 0,
