@@ -7,7 +7,7 @@ import {
     addCounter,
     removeCounter,
     incrementCounter
-} from '../app/reducer';
+} from '../app/reducers/count_reducer';
 
 import expect, { createSpy, spyOn, isSpy } from 'expect';
 

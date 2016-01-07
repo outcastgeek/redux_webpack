@@ -4,8 +4,9 @@
 
 import {
     toggleTodo,
-    todos
-} from '../app/todos_reducer';
+    todos,
+    todoApp
+} from '../app/reducers/todos_reducer';
 
 import expect from 'expect';
 
@@ -90,6 +91,51 @@ describe('Todos Reducer Tests', () => {
 
         expect(
             todos(stateBefore, action)
+        ).toEqual(stateAfter);
+    });
+
+    it('should set the visibility filter', () => {
+
+        const stateBefore = {
+            todos: [
+                {
+                    id: 0,
+                    text: 'Learn Redux',
+                    completed: false
+                },
+                {
+                    id: 1,
+                    text: 'Go shopping',
+                    completed: false
+                }
+            ],
+            visibilityFilter: 'SHOW_ALL'
+        };
+        const action = {
+            type: 'SET_VISIBILITY_FILTER',
+            filter: 'SHOW_COMPLETED'
+        };
+        const stateAfter = {
+            todos: [
+                {
+                    id: 0,
+                    text: 'Learn Redux',
+                    completed: false
+                },
+                {
+                    id: 1,
+                    text: 'Go shopping',
+                    completed: false
+                }
+            ],
+            visibilityFilter: 'SHOW_COMPLETED'
+        };
+
+        deepFreeze(stateBefore);
+        deepFreeze(action);
+
+        expect(
+            todoApp(stateBefore, action)
         ).toEqual(stateAfter);
     });
 

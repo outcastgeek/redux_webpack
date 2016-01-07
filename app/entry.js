@@ -8,12 +8,12 @@ import'./text.scss';
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import { createStore } from 'redux';
+import { countStore, todoStore } from './store/configureStore';
 
-import { counter } from './reducer';
-
-const store = createStore(counter);
+// Don't do this! You're bringing DevTools into the production bundle.
+import DevTools from './dev/DevTools';
 
 class CounterView extends Component {
 
@@ -31,15 +31,20 @@ class CounterView extends Component {
 
 const render = () => {
     ReactDOM.render(
-        <CounterView
-            value={store.getState()}
-            onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-            onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-        />,
+        <Provider store={countStore}>
+            <div>
+                <CounterView
+                    value={countStore.getState()}
+                    onIncrement={() => countStore.dispatch({ type: 'INCREMENT' })}
+                    onDecrement={() => countStore.dispatch({ type: 'DECREMENT' })}
+                />
+                <DevTools />
+            </div>
+        </Provider>,
         document.getElementById('content')
     );
 }
 
-store.subscribe(render);
+countStore.subscribe(render);
 
 render();

@@ -4,7 +4,8 @@
 
 'use strict';
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin'),
+    path = require('path');
 
 module.exports = {
     entry: "./app/entry.js",
@@ -21,7 +22,12 @@ module.exports = {
     ],
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['react-hot', 'babel', 'eslint']},
+            {
+                test: /\.js$/,
+                loaders: ['react-hot', 'babel', 'eslint'],
+                exclude: /node_modules/,
+                include: path.join(__dirname, 'app')
+            },
             { test: /\.css$/, loader: "style!css" },
             { test: /\.scss$/, loader: "style!css!sass" }
         ]
