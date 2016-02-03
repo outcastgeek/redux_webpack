@@ -66,18 +66,33 @@ const visibilityFilter = (
     }
 };
 
-const todoApp = (state = {}, action) => {
-    return {
-        todos: todos(
-            state.todos,
-            action
-        ),
-        visibilityFilter: visibilityFilter(
-            state.visibilityFilter,
-            action
-        )
-    };
-};
+import { combineReducers } from 'redux';
+
+// Always name the reducers after the key names of the state they manage,
+// so that the following shorthand notation ({key1, key2} <=> {key1: key1, key2: key2})
+// which is the ES6 object literal notation
+const todoApp = combineReducers({
+    todos,
+    visibilityFilter
+});
+
+//const todoApp = combineReducers({
+//    todos: todos, // The todos field of the state object will be managed by the todos reducer
+//    visibilityFilter: visibilityFilter // The vibilityFilter field of the state object will be managed by the visibilityFilter reducer
+//});
+
+//const todoApp = (state = {}, action) => {
+//    return {
+//        todos: todos(
+//            state.todos,
+//            action
+//        ),
+//        visibilityFilter: visibilityFilter(
+//            state.visibilityFilter,
+//            action
+//        )
+//    };
+//};
 
 module.exports = {
     toggleTodo: toggleTodo,
